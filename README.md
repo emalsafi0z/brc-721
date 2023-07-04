@@ -198,3 +198,46 @@ It's simple to transfer an brc-721 token, just send the inscription minted above
   * The metadata of the collection can be updated by the `update` inscription
   * The `update` inscription must be minted by the owner of `deploy` inscription and sent to the same address as the `deploy` inscription
   * `update` inscription ID should be larger than the deploy inscription ID
+
+
+## FAQ
+
+### What are the differences between brc-721 and native ordinals NFT?
+
+BRC-721 is built upon the ordinals protocol. Although native ordinals NFT itself can store images, there are significant functional differences between brc-721 and native ordinals NFT:
+
+* Data storage
+
+  * Native ordinals NFT stores images for each token, which can lead to high minting fees and occupy a large amount of Bitcoin network space.
+
+  * BRC-721 only needs to save the image once during deployment, and the mint operation does not require saving the image, which can significantly save minting fees and Bitcoin network space. Additionally, brc-721 supports storing images in off-chain services like IPFS, saving Bitcoin space and providing flexible attribute information for each token.
+
+  * Native ordinals NFT cannot effectively index a Collection, while brc-721 provides a JSON specification similar to brc-20, enabling effective indexing and searching of NFTs within a Collection.
+
+* BRC protocol compatibility
+
+  * BRC-721 adopts a protocol format similar to brc-20, defining different functions through JSON content, greatly improving the flexibility of NFTs. For example, the reveal function can be implemented through the update operation; the tick field enables effective indexing of NFTs within a Collection.
+
+* NFT ecosystem compatibility
+
+  * ERC-721 standard NFTs are more popular in the current market. BRC-721 adopts token URI and metadata specifications consistent with ERC-721, enabling quick adaptation to the existing NFT ecosystem. Meanwhile, native ordinals do not support traits and other fields, while brc-721 supports defining NFT attributes and rarity information.
+
+### What are the differences between brc-721 and brc-20?
+
+* BRC-721 is used for Non-Fungible Tokens (NFT), while brc-20 is used for Fungible Tokens
+
+* BRC-721 follows the brc-20 specifications, using JSON to define tokens and functions
+
+* BRC-20 requires minting an inscription before transferring, which is necessary for fungible tokens, but it leads to high transfer costs and increases invalid information on the Bitcoin network. BRC-721 takes advantage of the ordinals inscription feature and can complete the transfer directly by sending, significantly reducing costs and decreasing invalid information on the network.
+
+### What are the differences between brc-721 and brc721.com?
+
+[brc721.com](https://www.brc721.com/) also proposes a Non-Fungible Token (NFT) solution based on the ordinals protocol, but its protocol is more complex and is not compatible with brc-20. BRC-721, on the other hand, is consistent with the brc-20 standard.
+
+## Contribution
+
+BRC-721 is an experimental standard that brings non-fungible tokens (NFTs) to the Bitcoin network. With this standard, users can create, mint, transfer, and update unique digital assets, enabling a wide range of use cases, such as digital art, collectibles, virtual goods, and more.  
+
+The standard allows for a series of operations that facilitate the management of non-fungible tokens, including deployment, minting, transferring, and updating metadata. Each token is assigned a unique identifier, ensuring that each NFT is distinct and cannot be exchanged on a one-to-one basis with another NFT.  
+
+As an experimental standard, BRC-721 invites improvements and modifications to enhance its functionality and adapt it to the growing needs of the NFT ecosystem.
